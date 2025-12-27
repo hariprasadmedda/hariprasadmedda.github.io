@@ -1,6 +1,9 @@
 const tabButtons = document.querySelectorAll('.tab-button');
 const sections = document.querySelectorAll('.tab-section');
 
+const themeToggles = document.querySelectorAll('[data-theme-toggle]');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
 const artGrid = document.getElementById('art-grid');
 const categoryButtonsContainer = document.getElementById('category-buttons');
 let artData = [];
@@ -21,6 +24,44 @@ const lightboxImage = document.getElementById('lightbox-image');
 const lightboxTitle = document.getElementById('lightbox-title');
 const lightboxDesc = document.getElementById('lightbox-desc');
 const lightboxClose = document.getElementById('lightbox-close');
+
+function updateToggleUI(theme) {
+  themeToggles.forEach((toggle) => {
+    toggle.setAttribute('aria-pressed', theme === 'dark');
+    toggle.title = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+
+    const icon = toggle.querySelector('.theme-toggle__icon');
+    const label = toggle.querySelector('.theme-toggle__label');
+
+    if (icon) icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+    if (label) label.textContent = theme === 'dark' ? 'Dark' : 'Light';
+  });
+}
+
+function setTheme(theme) {
+  document.body.dataset.theme = theme;
+  try {
+    localStorage.setItem('theme', theme);
+  } catch (_) {
+    // ignore write errors (private mode)
+  }
+  updateToggleUI(theme);
+}
+
+function getInitialTheme() {
+  try {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || saved === 'light') return saved;
+  } catch (_) {
+    // ignore read errors
+  }
+  return prefersDark.matches ? 'dark' : 'light';
+}
+
+function handleThemeToggle() {
+  const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+  setTheme(next);
+}
 
 function showTab(targetId) {
   sections.forEach((section) => {
@@ -147,6 +188,24 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+themeToggles.forEach((toggle) => {
+  toggle.addEventListener('click', handleThemeToggle);
+});
+
+prefersDark.addEventListener('change', (event) => {
+  const saved = (() => {
+    try {
+      return localStorage.getItem('theme');
+    } catch (_) {
+      return null;
+    }
+  })();
+
+  if (!saved) {
+    setTheme(event.matches ? 'dark' : 'light');
+  }
+});
+
 async function loadArt() {
   try {
     const res = await fetch('data/art.json');
@@ -171,6 +230,7 @@ async function loadLiterature() {
 }
 
 // Init
+setTheme(getInitialTheme());
 showTab('home');
 buildCategoryButtons();
 loadArt();

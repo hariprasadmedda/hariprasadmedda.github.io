@@ -10,13 +10,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
-<body class="font-sans text-slate-100 bg-slate-950">
+  <body class="font-sans" data-theme="dark">
   <div class="relative min-h-screen flex">
     <div class="noise-overlay pointer-events-none"></div>
 
     <!-- Mobile top bar -->
-    <header class="md:hidden fixed top-0 left-0 right-0 z-30 backdrop-blur bg-slate-900/80 border-b border-slate-800">
-      <div class="flex items-center justify-between px-4 py-3">
+    <header class="md:hidden fixed top-0 left-0 right-0 z-30 backdrop-blur bg-slate-900/80 border-b border-slate-800 themed-surface">
+      <div class="flex items-center justify-between px-4 py-3 gap-3">
         <div class="flex items-center gap-2">
           <div class="h-10 w-10 rounded-full bg-gradient-to-br from-amber-400 to-rose-500"></div>
           <div>
@@ -24,16 +24,22 @@
             <h1 class="font-semibold text-lg">Your Name</h1>
           </div>
         </div>
-        <nav class="flex gap-2" aria-label="Primary">
-          <button class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/60 text-sm" data-target="home">Home</button>
-          <button class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" data-target="art">Art</button>
-          <button class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" data-target="literature">Literature</button>
-        </nav>
+        <div class="flex items-center gap-2">
+          <nav class="flex gap-2" aria-label="Primary">
+            <button class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/60 text-sm" data-target="home">Home</button>
+            <button class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" data-target="art">Art</button>
+            <button class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" data-target="literature">Literature</button>
+          </nav>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+            <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+            <span class="theme-toggle__label">Dark</span>
+          </button>
+        </div>
       </div>
     </header>
 
     <!-- Left rail nav -->
-    <aside class="hidden md:flex w-64 border-r border-slate-800/80 bg-slate-950/60 backdrop-blur px-6 py-10 flex-col justify-between sticky top-0 h-screen z-20">
+    <aside class="hidden md:flex w-64 border-r border-slate-800/80 bg-slate-950/60 backdrop-blur px-6 py-10 flex-col justify-between sticky top-0 h-screen z-20 themed-surface">
       <div class="flex flex-col gap-8">
         <div class="flex items-center gap-3">
           <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-400 to-rose-500 shadow-lg shadow-rose-900/30"></div>
@@ -47,6 +53,10 @@
           <button class="tab-button nav-button" data-target="art">Art</button>
           <button class="tab-button nav-button" data-target="literature">Literature</button>
         </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">Dark</span>
+        </button>
       </div>
       <div class="text-sm text-slate-500 leading-relaxed">
         <p class="font-mono text-xs text-slate-400">Available</p>
