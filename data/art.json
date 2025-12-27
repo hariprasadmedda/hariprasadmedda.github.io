@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Sun Chariot",
+    "category": "Mythology",
+    "src": "https://images.unsplash.com/photo-1523419400524-8654971abe2c?auto=format&fit=crop&w=1200&q=80",
+    "alt": "Mythological chariot in warm light",
+    "description": "A layered homage to solar deities with gilded accents and motion blur.",
+    "year": "2024"
+  },
+  {
+    "title": "Silent Facets",
+    "category": "Photography",
+    "src": "https://images.unsplash.com/photo-1526318472351-bc6c45e4f4a8?auto=format&fit=crop&w=1200&q=80",
+    "alt": "Portrait photograph with dramatic shadow",
+    "description": "Portrait study using single-source lighting to sculpt the face.",
+    "year": "2023"
+  },
+  {
+    "title": "Chromatic Drift",
+    "category": "Abstract",
+    "src": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80",
+    "alt": "Colorful abstract paint flows",
+    "description": "Interlaced color fields exploring rhythm and interruption.",
+    "year": "2024"
+  },
+  {
+    "title": "Signal",
+    "category": "Social awareness",
+    "src": "https://images.unsplash.com/photo-1509099836639-18ba02e2e38b?auto=format&fit=crop&w=1200&q=80",
+    "alt": "Hands holding a placard in a crowd",
+    "description": "Mixed-media poster series amplifying voices in public space.",
+    "year": "2022"
+  },
+  {
+    "title": "Night Market",
+    "category": "Commercial Art",
+    "src": "https://images.unsplash.com/photo-1470229538611-16ba8c7ffbd7?auto=format&fit=crop&w=1200&q=80",
+    "alt": "Vibrant food stall illustration",
+    "description": "Brand illustration capturing the glow and bustle of a street market.",
+    "year": "2023"
+  },
+  {
+    "title": "Quiet Poise",
+    "category": "Portrait",
+    "src": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
+    "alt": "Oil portrait of a woman in teal light",
+    "description": "Oil portrait emphasizing subtle temperature shifts and gaze.",
+    "year": "2024"
+  }
+]

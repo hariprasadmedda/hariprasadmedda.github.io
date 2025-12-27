@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Glass Rivers",
+    "type": "Poetry",
+    "year": "2024",
+    "summary": "A cycle on migration, refracted through water and light.",
+    "link": "https://example.com/glass-rivers.pdf"
+  },
+  {
+    "title": "Lines Between Walls",
+    "type": "Essay",
+    "year": "2023",
+    "summary": "Notes on public art, belonging, and the politics of space.",
+    "link": "https://example.com/lines-between-walls"
+  },
+  {
+    "title": "Blue Hour Letters",
+    "type": "Short Fiction",
+    "year": "2022",
+    "summary": "Fragmented correspondence between two cities at dusk.",
+    "link": ""
+  }
+]
