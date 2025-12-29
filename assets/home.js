@@ -66,6 +66,10 @@ const highlightCardsContainer = document.getElementById('highlight-cards');
 const tileLabelsContainer = document.getElementById('tile-labels');
 const introDescription = document.getElementById('intro-description');
 
+function createSlug(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
 function createParagraphElements(paragraphs) {
   return paragraphs.map((text) => {
     const p = document.createElement('p');
@@ -82,6 +86,7 @@ function renderAboutCards(cards) {
   cards.forEach((card) => {
     const wrapper = document.createElement('div');
     wrapper.className = 'card p-5 space-y-3';
+    wrapper.id = 'card-' + createSlug(card.title);
     if (card.span === 2) wrapper.classList.add('lg:col-span-2');
 
     const title = document.createElement('h3');
@@ -165,9 +170,17 @@ function renderTileLabels(cards) {
   tileLabelsContainer.innerHTML = '';
 
   cards.forEach((card) => {
-    const badge = document.createElement('span');
-    badge.className = 'badge';
+    const badge = document.createElement('a');
+    badge.className = 'badge cursor-pointer hover:opacity-80 transition-opacity';
     badge.textContent = card.title;
+    badge.href = '#card-' + createSlug(card.title);
+    badge.onclick = (e) => {
+      e.preventDefault();
+      const target = document.getElementById('card-' + createSlug(card.title));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    };
     tileLabelsContainer.appendChild(badge);
   });
 }
