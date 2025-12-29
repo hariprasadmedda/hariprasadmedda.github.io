@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artist Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="font-sans" data-theme="dark">
+  <div class="relative min-h-screen flex">
+    <div class="noise-overlay pointer-events-none"></div>
+
+    <!-- Mobile top bar -->
+    <header class="md:hidden fixed top-0 left-0 right-0 z-30 backdrop-blur themed-surface border-b border-slate-800">
+      <div class="flex items-center justify-between px-4 py-3 gap-3">
+        <div class="flex items-center gap-2">
+          <div class="h-10 w-10 rounded-full bg-gradient-to-br from-amber-400 to-rose-500"></div>
+          <div>
+            <p class="text-sm uppercase tracking-[0.2em] text-slate-400">Artist</p>
+            <h1 class="font-semibold text-lg">Hariprasad Medda</h1>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <nav class="flex gap-2" aria-label="Primary">
+            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/60 text-sm" href="home.html">Home</a>
+            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="index.html?tab=art">Art</a>
+            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="index.html?tab=literature">Literature</a>
+          </nav>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+            <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+            <span class="theme-toggle__label">Dark</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Left rail nav -->
+    <aside class="hidden md:flex w-64 border-r border-slate-800/80 themed-surface backdrop-blur px-6 py-10 flex-col justify-between sticky top-0 h-screen z-20">
+      <div class="flex flex-col gap-8">
+        <div class="flex items-center gap-3">
+          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-400 to-rose-500 shadow-lg shadow-rose-900/30"></div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Artist</p>
+            <h1 class="font-semibold text-xl leading-tight">Hariprasad Medda</h1>
+          </div>
+        </div>
+        <nav class="flex flex-col gap-2" aria-label="Primary">
+          <a class="tab-button nav-button" href="home.html">Biography</a>
+          <a class="tab-button nav-button" href="index.html?tab=art">Art</a>
+          <a class="tab-button nav-button" href="index.html?tab=literature">Literature</a>
+        </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__label">Dark</span>
+        </button>
+      </div>
+      <div class="text-sm text-slate-500 leading-relaxed">
+        <p class="font-mono text-xs text-slate-400">Available</p>
+        <p>Based in City, Country</p>
+        <p>Contact: <a class="text-amber-300 hover:text-amber-200" href="mailto:hello@example.com">hello@example.com</a></p>
+      </div>
+    </aside>
+
+    <main class="flex-1 relative w-full md:ml-64">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 pt-24 md:pt-12 pb-14 space-y-14">
+        <section class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-end">
+          <div class="space-y-5">
+            <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Artist Portfolio</p>
+            <h2 class="text-4xl sm:text-5xl font-semibold leading-tight">Hariprasad Medda</h2>
+            <p class="text-lg text-slate-300 max-w-2xl" id="intro-description"></p>
+            <div class="flex flex-wrap gap-3" id="tile-labels"></div>
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a class="filter-button" href="index.html?tab=art">View portfolio →</a>
+              <a class="filter-button" href="index.html?tab=literature">Read literature →</a>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-lg">
+            <img src="data/img/reading.jpg" alt="Hariprasad Medda" class="w-full h-full object-cover">
+          </div>
+        </section>
+
+        <section class="space-y-6" id="about-hariprasad-medda">
+          <div class="space-y-2">
+            <p class="text-sm uppercase tracking-[0.25em] text-slate-400">About the artist</p>
+            <h2 class="text-3xl font-semibold">Hariprasad Medda</h2>
+          </div>
+          <div class="grid gap-6 lg:grid-cols-2" id="about-cards"></div>
+        </section>
+
+        <section class="grid gap-6 lg:grid-cols-3" id="statement-cards"></section>
+
+        <section class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-start">
+          <div class="space-y-4">
+            <p class="text-sm uppercase tracking-[0.25em] text-slate-400">Biography</p>
+            <div class="card p-5 space-y-3" id="biography-summary"></div>
+          </div>
+          <div class="space-y-4">
+            <p class="text-sm uppercase tracking-[0.25em] text-slate-400">Highlights</p>
+            <div class="grid gap-4 md:grid-cols-2" id="highlight-cards"></div>
+          </div>
+        </section>
+
+        <section class="card p-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p class="text-sm uppercase tracking-[0.25em] text-slate-400">Stay in touch</p>
+            <h3 class="text-2xl font-semibold">Collaborations, commissions, or just a hello.</h3>
+            <p class="text-slate-300 text-sm">Email me with project details, timelines, and references. I reply within 2 business days.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a class="filter-button" href="mailto:hello@example.com">Email →</a>
+            <a class="filter-button" href="index.html?tab=art">See portfolio →</a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/home.js" defer></script>
+</body>
+</html>

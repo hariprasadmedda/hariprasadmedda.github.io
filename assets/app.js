@@ -1,4 +1,4 @@
-const tabButtons = document.querySelectorAll('.tab-button');
+const tabButtons = document.querySelectorAll('.tab-button[data-target]');
 const sections = document.querySelectorAll('.tab-section');
 
 const themeToggles = document.querySelectorAll('[data-theme-toggle]');
@@ -64,6 +64,8 @@ function handleThemeToggle() {
 }
 
 function showTab(targetId) {
+  if (!targetId) return;
+
   sections.forEach((section) => {
     section.classList.toggle('hidden', section.id !== targetId);
   });
@@ -85,6 +87,17 @@ function showTab(targetId) {
 tabButtons.forEach((button) => {
   button.addEventListener('click', () => showTab(button.dataset.target));
 });
+
+function getInitialTab() {
+  const validIds = new Set([...sections].map((s) => s.id));
+  const searchTab = new URLSearchParams(window.location.search).get('tab');
+  const hashTab = window.location.hash ? window.location.hash.replace('#', '') : '';
+  const preferred = searchTab || hashTab;
+
+  if (preferred && validIds.has(preferred)) return preferred;
+  if (validIds.has('art')) return 'art';
+  return sections[0] ? sections[0].id : '';
+}
 
 function buildCategoryButtons() {
   const tabs = ['all', ...ART_CATEGORIES];
@@ -231,7 +244,8 @@ async function loadLiterature() {
 
 // Init
 setTheme(getInitialTheme());
-showTab('home');
+const initialTab = getInitialTab();
+if (initialTab) showTab(initialTab);
 buildCategoryButtons();
 loadArt();
 loadLiterature();
