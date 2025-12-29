@@ -257,6 +257,17 @@ async function loadLiterature() {
   }
 }
 
+async function loadBiographyData() {
+  try {
+    const response = await fetch('data/biography.json');
+    if (!response.ok) throw new Error('Failed to load biography data');
+    const data = await response.json();
+    if (data.location) renderLocationInfo(data.location);
+  } catch (error) {
+    console.error('Biography data load error', error);
+  }
+}
+
 // Init
 setTheme(getInitialTheme());
 const initialTab = getInitialTab();
@@ -264,3 +275,4 @@ if (initialTab) showTab(initialTab);
 buildCategoryButtons();
 loadArt();
 loadLiterature();
+loadBiographyData();
