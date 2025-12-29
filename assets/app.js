@@ -6,6 +6,7 @@ const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
 const artGrid = document.getElementById('art-grid');
 const categoryButtonsContainer = document.getElementById('category-buttons');
+const locationInfo = document.getElementById('location-info');
 let artData = [];
 let currentCategory = 'all';
 const ART_CATEGORIES = [
@@ -24,6 +25,20 @@ const lightboxImage = document.getElementById('lightbox-image');
 const lightboxTitle = document.getElementById('lightbox-title');
 const lightboxDesc = document.getElementById('lightbox-desc');
 const lightboxClose = document.getElementById('lightbox-close');
+
+function renderLocationInfo(location) {
+  if (!locationInfo || !location) return;
+  locationInfo.innerHTML = '';
+
+  const status = document.createElement('p');
+  status.className = 'font-mono text-xs text-slate-400';
+  status.textContent = location.status;
+
+  const place = document.createElement('p');
+  place.textContent = location.place;
+
+  locationInfo.append(status, place);
+}
 
 function updateToggleUI(theme) {
   themeToggles.forEach((toggle) => {

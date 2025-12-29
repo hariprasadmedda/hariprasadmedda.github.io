@@ -1,5 +1,9 @@
 {
   "introDescription": "My freedom is in this sky, in the light and in the songs. I find life in the essence of the god within my heart. I feel the infinite within the finite. My life is a constant celebration.",
+  "location": {
+    "status": "Available",
+    "place": "Based in Arambagh, West Bengal, India"
+  },
   "aboutCards": [
     {
       "title": "Birth and Childhood",
@@ -102,23 +106,7 @@
       "span": 2
     }
   ],
-  "statementCards": [
-    {
-      "label": "Artist Statement",
-      "title": "On rhythm and memory",
-      "body": "My work listens for the rhythm inside ordinary moments. I layer color and text to surface what sits beneath daily repetition: the slight blur of movement, the echo of a word, the warmth of a familiar street. Each piece is an invitation to pause, notice, and carry something quiet forward."
-    },
-    {
-      "label": "Practice",
-      "title": "Process and materials",
-      "body": "I balance analog and digital. Canvas, charcoal, and ink sit beside generative sketches and photo composites. Field notes become poems; poems become color studies. The studio is iterative: capture, translate, reduce, then re-layer until the piece hums."
-    },
-    {
-      "label": "Availability",
-      "title": "Collaborations",
-      "body": "Open to exhibitions, book projects, album art, and public installations. Comfortable working with curators, editors, and musicians to build cohesive visual narratives."
-    }
-  ],
+  "statementCards": [],
   "biographySummary": {
     "body": "Born in City, Country. Studied fine arts and literature. Work shown in regional group shows and online exhibitions. Recent focus on blending documentary photography with painted overlays to explore displacement and home.",
     "items": [
