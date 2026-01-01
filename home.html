@@ -81,8 +81,7 @@
         <div class="flex items-center gap-2">
           <nav class="flex gap-2" aria-label="Primary">
             <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/60 text-sm" href="home.html">Home</a>
-            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="index.html?tab=art">Art</a>
-            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="index.html?tab=literature">Literature</a>
+            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="songs.html">Songs</a>
           </nav>
           <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
             <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
@@ -93,27 +92,7 @@
     </header>
 
     <!-- Left rail nav -->
-    <aside class="hidden md:flex w-64 border-r border-slate-800/80 themed-surface backdrop-blur px-6 py-10 flex-col justify-between sticky top-0 h-screen z-20">
-      <div class="flex flex-col gap-8">
-        <div class="flex items-center gap-3">
-          <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-400 to-rose-500 shadow-lg shadow-rose-900/30"></div>
-          <div>
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Artist</p>
-            <h1 class="font-semibold text-xl leading-tight">Hariprasad Medda</h1>
-          </div>
-        </div>
-        <nav class="flex flex-col gap-2" aria-label="Primary">
-          <a class="tab-button nav-button" href="home.html">Biography</a>
-          <a class="tab-button nav-button" href="index.html?tab=art">Art</a>
-          <a class="tab-button nav-button" href="index.html?tab=literature">Literature</a>
-        </nav>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
-          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
-          <span class="theme-toggle__label">Dark</span>
-        </button>
-      </div>
-      <div class="text-sm text-slate-500 leading-relaxed" id="location-info"></div>
-    </aside>
+    <div id="left-nav-container"></div>
 
     <main class="flex-1 relative w-full md:ml-64">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 pt-24 md:pt-12 pb-14 space-y-14">
@@ -197,5 +176,6 @@
   </div>
 
   <script src="assets/home.js" defer></script>
+  <script src="assets/nav-loader.js" defer></script>
 </body>
 </html>

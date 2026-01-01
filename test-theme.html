@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Theme Test</title>
+</head>
+<body data-theme="dark">
+  <h1>Theme Test</h1>
+  <button data-theme-toggle>Toggle Theme</button>
+  
+  <script>
+    function handleThemeToggle() {
+      const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+      console.log('Toggling from', document.body.dataset.theme, 'to', next);
+      document.body.dataset.theme = next;
+      document.body.style.backgroundColor = next === 'dark' ? '#000' : '#fff';
+      document.body.style.color = next === 'dark' ? '#fff' : '#000';
+    }
+    
+    function initThemeToggles() {
+      const toggles = document.querySelectorAll('[data-theme-toggle]');
+      console.log('Found toggles:', toggles.length);
+      toggles.forEach((toggle) => {
+        toggle.addEventListener('click', handleThemeToggle);
+      });
+    }
+    
+    initThemeToggles();
+  </script>
+</body>
+</html>

@@ -1,8 +1,8 @@
-const themeToggles = document.querySelectorAll('[data-theme-toggle]');
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
 function updateToggleUI(theme) {
-  themeToggles.forEach((toggle) => {
+  const toggles = document.querySelectorAll('[data-theme-toggle]');
+  toggles.forEach((toggle) => {
     toggle.setAttribute('aria-pressed', theme === 'dark');
     toggle.title = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
 
@@ -14,8 +14,7 @@ function updateToggleUI(theme) {
   });
 }
 
-function setTheme(theme) {
-  document.body.dataset.theme = theme;
+function setTheme(theme) {  console.log('setTheme called with:', theme);  document.body.dataset.theme = theme;
   try {
     localStorage.setItem('theme', theme);
   } catch (_) {
@@ -35,13 +34,25 @@ function getInitialTheme() {
 }
 
 function handleThemeToggle() {
-  const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+  const current = document.body.dataset.theme;
+  const next = current === 'dark' ? 'light' : 'dark';
+  console.log('Theme toggle clicked! Current:', current, 'Next:', next);
   setTheme(next);
 }
 
-themeToggles.forEach((toggle) => {
-  toggle.addEventListener('click', handleThemeToggle);
-});
+function initThemeToggles() {
+  const toggles = document.querySelectorAll('[data-theme-toggle]');
+  console.log('Initializing theme toggles, found:', toggles.length);
+  toggles.forEach((toggle) => {
+    // Remove existing listener to avoid duplicates
+    toggle.removeEventListener('click', handleThemeToggle);
+    toggle.addEventListener('click', handleThemeToggle);
+  });
+  // Update UI for any new toggles
+  updateToggleUI(document.body.dataset.theme);
+}
+
+initThemeToggles();
 
 prefersDark.addEventListener('change', (event) => {
   const saved = (() => {
@@ -56,6 +67,9 @@ prefersDark.addEventListener('change', (event) => {
     setTheme(event.matches ? 'dark' : 'light');
   }
 });
+
+// Set up event listener for dynamic nav loading before initialization
+window.addEventListener('navLoaded', initThemeToggles);
 
 setTheme(getInitialTheme());
 

@@ -1,0 +1,20 @@
+<!-- Left rail nav -->
+<aside class="hidden md:flex w-64 border-r border-slate-800/80 themed-surface backdrop-blur px-6 py-10 flex-col justify-between sticky top-0 h-screen z-20">
+  <div class="flex flex-col gap-8">
+    <div class="flex items-center gap-3">
+      <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-400 to-rose-500 shadow-lg shadow-rose-900/30"></div>
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Artist</p>
+        <h1 class="font-semibold text-xl leading-tight">Hariprasad Medda</h1>
+      </div>
+    </div>
+    <nav class="flex flex-col gap-2" aria-label="Primary" id="left-nav-links">
+      <!-- Navigation links will be dynamically set based on the current page -->
+    </nav>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+      <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+      <span class="theme-toggle__label">Dark</span>
+    </button>
+  </div>
+  <div class="text-sm text-slate-500 leading-relaxed" id="location-info"></div>
+</aside>
