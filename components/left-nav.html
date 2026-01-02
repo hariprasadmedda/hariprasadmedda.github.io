@@ -1,8 +1,10 @@
 <!-- Left rail nav -->
-<aside class="hidden md:flex w-64 border-r border-slate-800/80 themed-surface backdrop-blur px-6 py-10 flex-col justify-between sticky top-0 h-screen z-20">
+<aside
+  class="hidden md:flex w-64 border-r border-slate-800/80 themed-surface backdrop-blur px-6 py-10 flex-col justify-between sticky top-0 h-screen z-20">
   <div class="flex flex-col gap-8">
     <div class="flex items-center gap-3">
-      <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-400 to-rose-500 shadow-lg shadow-rose-900/30"></div>
+      <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-400 to-rose-500 shadow-lg shadow-rose-900/30">
+      </div>
       <div>
         <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Artist</p>
         <h1 class="font-semibold text-xl leading-tight">Hariprasad Medda</h1>
@@ -13,8 +15,39 @@
     </nav>
     <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
       <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
-      <span class="theme-toggle__label">Dark</span>
+      <span class="theme-toggle__label">      python3 -m http.server</span>
     </button>
   </div>
   <div class="text-sm text-slate-500 leading-relaxed" id="location-info"></div>
 </aside>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleButton = document.querySelector('[data-theme-toggle]');
+    const themeLabel = themeToggleButton.querySelector('.theme-toggle__label');
+    const themeIcon = themeToggleButton.querySelector('.theme-toggle__icon');
+
+    // Function to toggle theme
+    const toggleTheme = () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      themeLabel.textContent = isDark ? 'Light' : 'Dark';
+      themeIcon.textContent = isDark ? '☀️' : '🌙';
+    };
+
+    // Set initial theme based on system preference or saved preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    const isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      themeLabel.textContent = 'Light';
+      themeIcon.textContent = '☀️';
+    }
+
+    // Add event listener to toggle button
+    themeToggleButton.addEventListener('click', () => {
+      toggleTheme();
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+  });
+</script>
