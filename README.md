@@ -19,6 +19,11 @@ Single-page portfolio with a left rail nav (Home, Art, Literature), Tailwind via
 ## Literature entries
 - Data source: `data/literature.json` entries: `{ "title", "type", "year", "summary", "link" }` (link optional).
 
+## Gallery data (manual)
+- Data source: `data/gallery.json`.
+- After adding/changing image folders under `art/`, regenerate JSON with:
+  - `./scripts/generate-gallery-json.sh`
+
 ## Lightbox & filters
 - Category buttons filter the grid; lightbox opens on click/tap of an artwork card or its button.
 
