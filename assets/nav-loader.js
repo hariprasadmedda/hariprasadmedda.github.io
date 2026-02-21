@@ -19,19 +19,23 @@
     const navConfig = {
       'index.html': [
         { href: 'index.html', text: 'Biography', active: true },
-        { href: 'songs.html', text: 'Songs', active: false }
+        { href: 'songs.html', text: 'Songs', active: false },
+        { href: 'gallery.html', text: 'Gallery', active: false }
       ],
       'home.html': [
         { href: 'home.html', text: 'Biography', active: true },
-        { href: 'songs.html', text: 'Songs', active: false }
+        { href: 'songs.html', text: 'Songs', active: false },
+        { href: 'gallery.html', text: 'Gallery', active: false }
       ],
       'gallery.html': [
         { href: 'home.html', text: 'Biography', active: false },
-        { href: 'songs.html', text: 'Songs', active: false }
+        { href: 'songs.html', text: 'Songs', active: false },
+        { href: 'gallery.html', text: 'Gallery', active: true }
       ],
       'songs.html': [
         { href: 'index.html', text: 'Biography', active: false },
-        { href: 'songs.html', text: 'Songs', active: true }
+        { href: 'songs.html', text: 'Songs', active: true },
+        { href: 'gallery.html', text: 'Gallery', active: false }
       ]
     };
 
