@@ -15,39 +15,8 @@
     </nav>
     <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
       <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
-      <span class="theme-toggle__label">      python3 -m http.server</span>
+      <span class="theme-toggle__label">Dark</span>
     </button>
   </div>
   <div class="text-sm text-slate-500 leading-relaxed" id="location-info"></div>
 </aside>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleButton = document.querySelector('[data-theme-toggle]');
-    const themeLabel = themeToggleButton.querySelector('.theme-toggle__label');
-    const themeIcon = themeToggleButton.querySelector('.theme-toggle__icon');
-
-    // Function to toggle theme
-    const toggleTheme = () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      themeLabel.textContent = isDark ? 'Light' : 'Dark';
-      themeIcon.textContent = isDark ? '☀️' : '🌙';
-    };
-
-    // Set initial theme based on system preference or saved preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedTheme = localStorage.getItem('theme');
-    const isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
-
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      themeLabel.textContent = 'Light';
-      themeIcon.textContent = '☀️';
-    }
-
-    // Add event listener to toggle button
-    themeToggleButton.addEventListener('click', () => {
-      toggleTheme();
-      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    });
-  });
-</script>
