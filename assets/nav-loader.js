@@ -21,30 +21,42 @@
         { href: 'index.html', text: 'Biography', active: true },
         { href: 'songs.html', text: 'Songs', active: false },
         { href: 'videos.html', text: 'Videos', active: false },
+        { href: 'poems.html', text: 'Poems', active: false },
         { href: 'gallery.html', text: 'Gallery', active: false }
       ],
       'home.html': [
         { href: 'home.html', text: 'Biography', active: true },
         { href: 'songs.html', text: 'Songs', active: false },
         { href: 'videos.html', text: 'Videos', active: false },
+        { href: 'poems.html', text: 'Poems', active: false },
         { href: 'gallery.html', text: 'Gallery', active: false }
       ],
       'gallery.html': [
         { href: 'home.html', text: 'Biography', active: false },
         { href: 'songs.html', text: 'Songs', active: false },
         { href: 'videos.html', text: 'Videos', active: false },
+        { href: 'poems.html', text: 'Poems', active: false },
         { href: 'gallery.html', text: 'Gallery', active: true }
       ],
       'songs.html': [
         { href: 'home.html', text: 'Biography', active: false },
         { href: 'songs.html', text: 'Songs', active: true },
         { href: 'videos.html', text: 'Videos', active: false },
+        { href: 'poems.html', text: 'Poems', active: false },
         { href: 'gallery.html', text: 'Gallery', active: false }
       ],
       'videos.html': [
         { href: 'home.html', text: 'Biography', active: false },
         { href: 'songs.html', text: 'Songs', active: false },
         { href: 'videos.html', text: 'Videos', active: true },
+        { href: 'poems.html', text: 'Poems', active: false },
+        { href: 'gallery.html', text: 'Gallery', active: false }
+      ],
+      'poems.html': [
+        { href: 'home.html', text: 'Biography', active: false },
+        { href: 'songs.html', text: 'Songs', active: false },
+        { href: 'videos.html', text: 'Videos', active: false },
+        { href: 'poems.html', text: 'Poems', active: true },
         { href: 'gallery.html', text: 'Gallery', active: false }
       ]
     };
