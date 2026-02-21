@@ -1,0 +1,25 @@
+<!-- Mobile top bar -->
+<header class="md:hidden fixed top-0 left-0 right-0 z-30 backdrop-blur themed-surface border-b border-slate-800">
+  <div class="px-4 py-3 space-y-3">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2 min-w-0">
+        <img
+          src="data/img/reading.jpg"
+          alt="Hariprasad Medda sitting"
+          class="h-10 w-10 rounded-full object-cover border border-slate-700/80"
+        />
+        <div class="min-w-0">
+          <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Artist</p>
+          <h1 class="font-semibold text-base leading-tight truncate">Hariprasad Medda</h1>
+        </div>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+        <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+        <span class="theme-toggle__label">Dark</span>
+      </button>
+    </div>
+    <nav class="flex gap-2 overflow-x-auto whitespace-nowrap pb-1" aria-label="Primary" id="mobile-top-links">
+      <!-- Mobile links will be dynamically set based on current page -->
+    </nav>
+  </div>
+</header>
