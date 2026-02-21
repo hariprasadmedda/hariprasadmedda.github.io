@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+  try {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark" || savedTheme === "light") {
+      document.documentElement.dataset.theme = savedTheme;
+    }
+  } catch (_) {}
+</script>
   <title>Hariprasad Medda - Artist Biography | Painter, Writer, Cultural Icon from Arambagh</title>
   <meta name="description" content="Explore the life and work of Hariprasad Medda, a renowned artist, painter, writer, and cultural icon from Arambagh, West Bengal. Born in 1932, student of Nandalal Bose at Santiniketan, with over 1000 paintings and 50+ literary works." />
   <meta name="keywords" content="Hariprasad Medda, Indian artist, Bengali painter, Santiniketan, Nandalal Bose, Arambagh artist, West Bengal painter, Indian art, Bengali literature, Kala Bhavana, contemporary Indian artist" />
@@ -28,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260221d" />
   
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -143,7 +151,7 @@
     </main>
   </div>
 
-  <script src="assets/home.js" defer></script>
-  <script src="assets/nav-loader.js?v=20260221" defer></script>
+  <script src="assets/nav-loader.js?v=20260221d" defer></script>
+  <script src="assets/home.js?v=20260221d" defer></script>
 </body>
 </html>

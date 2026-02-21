@@ -29,6 +29,7 @@ function updateToggleUI(theme) {
 }
 
 function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
   document.body.dataset.theme = theme;
   try {
     localStorage.setItem('theme', theme);
@@ -259,6 +260,7 @@ window.addEventListener('navLoaded', initThemeToggles);
 
 setTheme(getInitialTheme());
 initThemeToggles();
+document.body.dataset.themeReady = "true";
 initLightbox();
 loadLocationInfo();
 loadArtGallery();
