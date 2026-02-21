@@ -69,8 +69,11 @@
         </div>
         <div class="flex items-center gap-2">
           <nav class="flex gap-2" aria-label="Primary">
-            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/60 text-sm" href="home.html">Biography</a>
+            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="home.html">Biography</a>
             <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="songs.html">Songs</a>
+            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="videos.html">Videos</a>
+            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="poems.html">Poems</a>
+            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/60 text-sm" href="gallery.html">Art Gallery</a>
           </nav>
           <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
             <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
@@ -87,10 +90,17 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 pt-24 md:pt-12 pb-14">
         <section class="space-y-6">
           <div>
-            <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Page Removed</p>
-            <h2 class="text-3xl font-semibold">Content No Longer Available</h2>
-            <p class="text-lg text-slate-300 mt-4">The art and literature sections have been removed. Please visit the <a href="home.html" class="text-amber-400 hover:text-amber-300">Biography</a> or <a href="songs.html" class="text-amber-400 hover:text-amber-300">Songs</a> pages.</p>
+            <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Art Archive</p>
+            <h2 class="text-3xl font-semibold">Art Gallery</h2>
+            <p class="text-lg text-slate-300 mt-4">Art galary of Hariprasad Medda, featuring paintings, sketches.</p>
           </div>
+          <div id="gallery-status" class="text-slate-400">Loading photos...</div>
+          <div id="gallery-sections" class="space-y-10"></div>
+          <div id="gallery-error" class="hidden text-rose-300"></div>
+          <div id="gallery-empty" class="hidden text-slate-400">No image folders found yet.</div>
+        </section>
+        <section class="mt-12">
+          <p class="text-sm text-slate-400">Tip: Click any image to open the preview.</p>
         </section>
       </div>
     </main>
@@ -110,7 +120,7 @@
     </div>
   </div>
 
-  <script src="assets/app.js" defer></script>
+  <script src="assets/gallery.js" defer></script>
   <script src="assets/nav-loader.js" defer></script>
 </body>
 </html>

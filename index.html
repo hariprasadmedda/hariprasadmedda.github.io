@@ -15,14 +15,14 @@
   <meta property="og:url" content="https://hariprasadmedda.github.io/home.html" />
   <meta property="og:title" content="Hariprasad Medda - Artist Biography" />
   <meta property="og:description" content="Renowned artist, painter, and writer from Arambagh, West Bengal. Student of Nandalal Bose with over 1000 paintings and 50+ literary works." />
-  <meta property="og:image" content="https://hariprasadmedda.github.io/data/img/reading.jpg" />
+  <meta property="og:image" content="https://hariprasadmedda.github.io/data/img/sahitya_chorcha.jpeg" />
   
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://hariprasadmedda.github.io/home.html" />
   <meta property="twitter:title" content="Hariprasad Medda - Artist Biography" />
   <meta property="twitter:description" content="Renowned artist, painter, and writer from Arambagh, West Bengal. Student of Nandalal Bose with over 1000 paintings and 50+ literary works." />
-  <meta property="twitter:image" content="https://hariprasadmedda.github.io/data/img/reading.jpg" />
+  <meta property="twitter:image" content="https://hariprasadmedda.github.io/data/img/sahitya_chorcha.jpeg" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,6 +82,8 @@
           <nav class="flex gap-2" aria-label="Primary">
             <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/60 text-sm" href="index.html">Home</a>
             <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="songs.html">Songs</a>
+            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="videos.html">Videos</a>
+            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm" href="poems.html">Poems</a>
           </nav>
           <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
             <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
@@ -100,7 +102,9 @@
           <div class="space-y-5">
             <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Artist Portfolio</p>
             <h2 class="text-4xl sm:text-5xl font-semibold leading-tight">Hariprasad Medda</h2>
+            <p id="biography-error" class="hidden text-sm text-rose-300"></p>
             <p class="text-lg text-slate-300 max-w-2xl" id="intro-description"></p>
+            <div id="location-info" class="space-y-1"></div>
             <div class="flex flex-wrap gap-3" id="tile-labels"></div>
             <div class="flex flex-wrap gap-3 pt-2">
               <a class="filter-button" href="gallery.html">View portfolio →</a>
@@ -108,7 +112,7 @@
             </div>
           </div>
           <div class="overflow-hidden rounded-lg">
-            <img src="data/img/reading.jpg" alt="Hariprasad Medda" class="w-full h-full object-cover">
+            <img src="data/img/sahitya_chorcha.jpeg" alt="Hariprasad Medda" class="w-full h-full object-cover">
           </div>
         </section>
 
@@ -121,6 +125,22 @@
         </section>
 
         <section class="grid gap-6 lg:grid-cols-3" id="statement-cards"></section>
+
+        <section class="space-y-4">
+          <div class="space-y-2">
+            <p class="text-sm uppercase tracking-[0.25em] text-slate-400">Biography Snapshot</p>
+            <h3 class="text-2xl font-semibold">Quick Profile</h3>
+          </div>
+          <div class="card p-5 space-y-4" id="biography-summary"></div>
+        </section>
+
+        <section class="space-y-4">
+          <div class="space-y-2">
+            <p class="text-sm uppercase tracking-[0.25em] text-slate-400">Highlights</p>
+            <h3 class="text-2xl font-semibold">Selected Mentions</h3>
+          </div>
+          <div class="grid gap-6 lg:grid-cols-2" id="highlight-cards"></div>
+        </section>
 
         <section class="overflow-hidden rounded-lg max-w-3xl mx-auto">
           <img src="data/img/sitting.jpg" alt="Hariprasad Medda" class="w-full h-full object-cover">

@@ -19,19 +19,45 @@
     const navConfig = {
       'index.html': [
         { href: 'index.html', text: 'Biography', active: true },
+        { href: 'gallery.html', text: 'Art Gallery', active: false },
+        { href: 'videos.html', text: 'Videos', active: false },
+        { href: 'poems.html', text: 'Poems', active: false },
         { href: 'songs.html', text: 'Songs', active: false }
       ],
       'home.html': [
         { href: 'home.html', text: 'Biography', active: true },
+        { href: 'gallery.html', text: 'Art Gallery', active: false },
+        { href: 'videos.html', text: 'Videos', active: false },
+        { href: 'poems.html', text: 'Poems', active: false },
         { href: 'songs.html', text: 'Songs', active: false }
       ],
       'gallery.html': [
         { href: 'home.html', text: 'Biography', active: false },
+        { href: 'gallery.html', text: 'Art Gallery', active: true },
+        { href: 'videos.html', text: 'Videos', active: false },
+        { href: 'poems.html', text: 'Poems', active: false },
         { href: 'songs.html', text: 'Songs', active: false }
       ],
       'songs.html': [
-        { href: 'index.html', text: 'Biography', active: false },
+        { href: 'home.html', text: 'Biography', active: false },
+        { href: 'gallery.html', text: 'Art Gallery', active: false },
+        { href: 'videos.html', text: 'Videos', active: false },
+        { href: 'poems.html', text: 'Poems', active: false },
         { href: 'songs.html', text: 'Songs', active: true }
+      ],
+      'videos.html': [
+        { href: 'home.html', text: 'Biography', active: false },
+        { href: 'gallery.html', text: 'Art Gallery', active: false },
+        { href: 'videos.html', text: 'Videos', active: true },
+        { href: 'poems.html', text: 'Poems', active: false },
+        { href: 'songs.html', text: 'Songs', active: false }
+      ],
+      'poems.html': [
+        { href: 'home.html', text: 'Biography', active: false },
+        { href: 'gallery.html', text: 'Art Gallery', active: false },
+        { href: 'videos.html', text: 'Videos', active: false },
+        { href: 'poems.html', text: 'Poems', active: true },
+        { href: 'songs.html', text: 'Songs', active: false }
       ]
     };
 

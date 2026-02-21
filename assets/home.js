@@ -80,6 +80,20 @@ const highlightCardsContainer = document.getElementById('highlight-cards');
 const tileLabelsContainer = document.getElementById('tile-labels');
 const introDescription = document.getElementById('intro-description');
 const locationInfo = document.getElementById('location-info');
+const biographyErrorBanner = document.getElementById('biography-error');
+
+function showBiographyError(message) {
+  if (biographyErrorBanner) {
+    biographyErrorBanner.textContent = message;
+    biographyErrorBanner.classList.remove('hidden');
+  }
+  if (introDescription && !introDescription.textContent.trim()) {
+    introDescription.textContent = 'Biography content is currently unavailable.';
+  }
+  if (aboutCardsContainer && !aboutCardsContainer.children.length) {
+    aboutCardsContainer.innerHTML = '<p class="text-rose-300">Could not load biography cards.</p>';
+  }
+}
 
 function renderLocationInfo(location) {
   if (!locationInfo || !location) return;
@@ -231,6 +245,11 @@ async function loadBiographyData() {
     renderTileLabels(data.aboutCards || []);
   } catch (error) {
     console.error('Biography data load error', error);
+    const isFileProtocol = window.location.protocol === 'file:';
+    const hint = isFileProtocol
+      ? ' Open this site with a local server (for example: python3 -m http.server).'
+      : '';
+    showBiographyError(`Biography data failed to load.${hint}`);
   }
 }
 
