@@ -14,7 +14,8 @@ function updateToggleUI(theme) {
   });
 }
 
-function setTheme(theme) {  console.log('setTheme called with:', theme);  document.body.dataset.theme = theme;
+function setTheme(theme) {  console.log('setTheme called with:', theme);  document.documentElement.dataset.theme = theme;
+  document.body.dataset.theme = theme;
   try {
     localStorage.setItem('theme', theme);
   } catch (_) {
@@ -72,6 +73,7 @@ prefersDark.addEventListener('change', (event) => {
 window.addEventListener('navLoaded', initThemeToggles);
 
 setTheme(getInitialTheme());
+document.body.dataset.themeReady = "true";
 
 const aboutCardsContainer = document.getElementById('about-cards');
 const statementCardsContainer = document.getElementById('statement-cards');

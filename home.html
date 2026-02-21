@@ -4,6 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+  try {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark" || savedTheme === "light") {
+      document.documentElement.dataset.theme = savedTheme;
+    }
+  } catch (_) {}
+</script>
   <title>Hariprasad Medda - Artist Biography | Painter, Writer, Cultural Icon from Arambagh</title>
   <meta name="description"
     content="Explore the life and work of Hariprasad Medda, a renowned artist, painter, writer, and cultural icon from Arambagh, West Bengal. Born in 1932, student of Nandalal Bose at Santiniketan, with over 1000 paintings and 50+ literary works." />
@@ -35,7 +43,7 @@
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
     rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260221d" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -75,35 +83,7 @@
 <body class="font-sans" data-theme="dark">
   <div class="relative min-h-screen flex">
     <div class="noise-overlay pointer-events-none"></div>
-
-    <!-- Mobile top bar -->
-    <header class="md:hidden fixed top-0 left-0 right-0 z-30 backdrop-blur themed-surface border-b border-slate-800">
-      <div class="flex items-center justify-between px-4 py-3 gap-3">
-        <div class="flex items-center gap-2">
-          <div class="h-10 w-10 rounded-full bg-gradient-to-br from-amber-400 to-rose-500"></div>
-          <div>
-            <p class="text-sm uppercase tracking-[0.2em] text-slate-400">Artist</p>
-            <h1 class="font-semibold text-lg">Hariprasad Medda</h1>
-          </div>
-        </div>
-        <div class="flex items-center gap-2">
-          <nav class="flex gap-2" aria-label="Primary">
-            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/60 text-sm"
-              href="home.html">Home</a>
-            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm"
-              href="songs.html">Songs</a>
-            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm"
-              href="videos.html">Videos</a>
-            <a class="tab-button px-3 py-2 rounded-md border border-slate-800 bg-slate-800/40 text-sm"
-              href="poems.html">Poems</a>
-          </nav>
-          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
-            <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
-            <span class="theme-toggle__label">Dark</span>
-          </button>
-        </div>
-      </div>
-    </header>
+    <div id="mobile-top-container"></div>
 
     <!-- Left rail nav -->
     <div id="left-nav-container"></div>
@@ -160,8 +140,8 @@
     </main>
   </div>
 
-  <script src="assets/home.js" defer></script>
-  <script src="assets/nav-loader.js" defer></script>
+  <script src="assets/nav-loader.js?v=20260221d" defer></script>
+  <script src="assets/home.js?v=20260221d" defer></script>
 </body>
 
 </html>

@@ -41,6 +41,7 @@ function renderLocationInfo(location) {
 
 function setTheme(theme) {
   console.log('setTheme called with:', theme);
+  document.documentElement.dataset.theme = theme;
   document.body.dataset.theme = theme;
   try {
     localStorage.setItem('theme', theme);
@@ -285,6 +286,7 @@ window.addEventListener('navLoaded', initThemeToggles);
 // Init
 setTheme(getInitialTheme());
 initThemeToggles();
+document.body.dataset.themeReady = "true";
 const initialTab = getInitialTab();
 if (initialTab) showTab(initialTab);
 buildCategoryButtons();
