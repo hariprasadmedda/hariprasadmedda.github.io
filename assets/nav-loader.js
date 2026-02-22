@@ -116,7 +116,12 @@ function ensureLeftNavToggles() {
       hideButton.setAttribute('aria-controls', 'left-nav-container');
       hideButton.setAttribute('aria-label', 'Hide left navigation');
       hideButton.textContent = 'Hide menu';
-      leftNavLinks.insertAdjacentElement('afterend', hideButton);
+      const leftNavThemeToggle = leftNavContainer.querySelector('button.theme-toggle[data-theme-toggle]');
+      if (leftNavThemeToggle) {
+        leftNavThemeToggle.insertAdjacentElement('afterend', hideButton);
+      } else {
+        leftNavLinks.insertAdjacentElement('afterend', hideButton);
+      }
 
       hideButton.addEventListener('click', () => {
         applyLeftNavState(true);
