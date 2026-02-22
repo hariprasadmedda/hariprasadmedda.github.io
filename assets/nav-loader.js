@@ -62,6 +62,86 @@ const mobileActiveHrefByPage = {
   'songs.html': 'songs.html'
 };
 
+const LEFT_NAV_STATE_KEY = 'leftNavHidden';
+const LEFT_NAV_COLLAPSED_CLASS = 'left-nav-collapsed';
+const LEFT_NAV_HIDE_TOGGLE_ID = 'left-nav-hide-toggle';
+const LEFT_NAV_SHOW_TOGGLE_ID = 'left-nav-show-toggle';
+
+function getSavedLeftNavHidden() {
+  try {
+    return localStorage.getItem(LEFT_NAV_STATE_KEY) === 'true';
+  } catch (_) {
+    return false;
+  }
+}
+
+function saveLeftNavHidden(hidden) {
+  try {
+    localStorage.setItem(LEFT_NAV_STATE_KEY, hidden ? 'true' : 'false');
+  } catch (_) {
+    // Ignore storage failures.
+  }
+}
+
+function applyLeftNavState(hidden) {
+  const body = document.body;
+  if (!body) return;
+
+  body.classList.toggle(LEFT_NAV_COLLAPSED_CLASS, hidden);
+
+  const hideToggle = document.getElementById(LEFT_NAV_HIDE_TOGGLE_ID);
+  if (hideToggle) {
+    hideToggle.setAttribute('aria-expanded', hidden ? 'false' : 'true');
+  }
+
+  const showToggle = document.getElementById(LEFT_NAV_SHOW_TOGGLE_ID);
+  if (showToggle) {
+    showToggle.setAttribute('aria-expanded', hidden ? 'false' : 'true');
+    showToggle.classList.toggle('is-visible', hidden);
+  }
+}
+
+function ensureLeftNavToggles() {
+  const body = document.body;
+  if (!body) return;
+
+  const leftNavContainer = document.getElementById('left-nav-container');
+  if (leftNavContainer && !document.getElementById(LEFT_NAV_HIDE_TOGGLE_ID)) {
+    const leftNavLinks = document.getElementById('left-nav-links');
+    if (leftNavLinks) {
+      const hideButton = document.createElement('button');
+      hideButton.id = LEFT_NAV_HIDE_TOGGLE_ID;
+      hideButton.type = 'button';
+      hideButton.className = 'left-nav-hide-toggle';
+      hideButton.setAttribute('aria-controls', 'left-nav-container');
+      hideButton.setAttribute('aria-label', 'Hide left navigation');
+      hideButton.textContent = 'Hide menu';
+      leftNavLinks.insertAdjacentElement('afterend', hideButton);
+
+      hideButton.addEventListener('click', () => {
+        applyLeftNavState(true);
+        saveLeftNavHidden(true);
+      });
+    }
+  }
+
+  if (!document.getElementById(LEFT_NAV_SHOW_TOGGLE_ID)) {
+    const showButton = document.createElement('button');
+    showButton.id = LEFT_NAV_SHOW_TOGGLE_ID;
+    showButton.type = 'button';
+    showButton.className = 'left-nav-show-toggle';
+    showButton.setAttribute('aria-controls', 'left-nav-container');
+    showButton.setAttribute('aria-label', 'Show left navigation');
+    showButton.textContent = 'Show menu';
+    body.appendChild(showButton);
+
+    showButton.addEventListener('click', () => {
+      applyLeftNavState(false);
+      saveLeftNavHidden(false);
+    });
+  }
+}
+
 async function loadLeftNav() {
   const leftNavContainer = document.getElementById('left-nav-container');
   if (!leftNavContainer) return;
@@ -141,6 +221,9 @@ async function loadSharedNav() {
   if (mobileResult.status === 'rejected') {
     console.error('Error loading mobile nav:', mobileResult.reason);
   }
+
+  ensureLeftNavToggles();
+  applyLeftNavState(getSavedLeftNavHidden());
 
   setTimeout(() => {
     window.dispatchEvent(new CustomEvent('navLoaded'));

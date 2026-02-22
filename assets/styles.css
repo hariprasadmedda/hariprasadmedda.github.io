@@ -149,8 +149,140 @@ body[data-theme-ready="true"] {
 }
 
 #lightbox {
+  z-index: 15;
   backdrop-filter: blur(4px);
   background: var(--lightbox-bg);
+}
+
+#lightbox.hidden {
+  display: none;
+  pointer-events: none;
+}
+
+.lightbox-image-wrap {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+.lightbox-graph-overlay {
+  --grid-color: #ffffff;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.graph-grid-border {
+  fill: none;
+  stroke: color-mix(in srgb, var(--grid-color) 85%, transparent);
+  stroke-width: 0.45;
+}
+
+.graph-grid-line {
+  stroke: color-mix(in srgb, var(--grid-color) 62%, transparent);
+  stroke-width: 0.32;
+}
+
+.drawing-controls {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.drawing-controls__label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.grid-size-select {
+  border-radius: 0.6rem;
+  border: 1px solid var(--border-strong);
+  background: var(--chip-bg);
+  color: var(--text-primary);
+  padding: 0.3rem 0.45rem;
+  font-size: 0.8rem;
+}
+
+.grid-size-select:focus-visible {
+  outline: 2px solid rgba(251, 191, 36, 0.8);
+  outline-offset: 2px;
+}
+
+.grid-color-input {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.45rem;
+  background: transparent;
+  padding: 0.08rem;
+  cursor: pointer;
+}
+
+.grid-color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.grid-color-input::-webkit-color-swatch {
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.drawing-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--chip-bg);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.drawing-toggle:hover {
+  border-color: rgba(56, 189, 248, 0.65);
+}
+
+.drawing-toggle[aria-pressed='true'] {
+  border-color: rgba(251, 191, 36, 0.75);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.28), rgba(56, 189, 248, 0.24));
+}
+
+.drawing-toggle:focus-visible {
+  outline: 2px solid rgba(251, 191, 36, 0.8);
+  outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .drawing-controls {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.4rem;
+  }
+
+  .drawing-controls__label {
+    font-size: 0.7rem;
+  }
+
+  .grid-size-select {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .drawing-toggle {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.65rem;
+  }
 }
 
 .themed-surface {
@@ -192,6 +324,47 @@ body[data-theme-ready="true"] {
   letter-spacing: 0.02em;
 }
 
+.left-nav-hide-toggle,
+.left-nav-show-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: color-mix(in srgb, var(--bg-panel) 88%, transparent);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.left-nav-hide-toggle {
+  margin-top: 0.5rem;
+}
+
+.left-nav-show-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 35;
+  display: none;
+  backdrop-filter: blur(8px);
+}
+
+.left-nav-hide-toggle:hover,
+.left-nav-show-toggle:hover {
+  border-color: rgba(251, 191, 36, 0.65);
+  transform: translateY(-1px);
+}
+
+.left-nav-hide-toggle:focus-visible,
+.left-nav-show-toggle:focus-visible {
+  outline: 2px solid rgba(251, 191, 36, 0.8);
+  outline-offset: 2px;
+}
+
 .themed-surface .tab-button {
   color: var(--text-primary);
 }
@@ -220,6 +393,18 @@ body[data-theme-ready="true"] {
 }
 
 @media (min-width: 768px) {
+  body.left-nav-collapsed #left-nav-container {
+    display: none;
+  }
+
+  body.left-nav-collapsed .left-nav-show-toggle.is-visible {
+    display: inline-flex;
+  }
+
+  body.left-nav-collapsed main {
+    margin-left: 0 !important;
+  }
+
   #mobile-top-container:empty::before {
     display: none;
   }
@@ -296,6 +481,11 @@ body[data-theme="light"] .rounded-2xl.border-slate-800\/80,
 }
 
 @media (max-width: 767px) {
+  .left-nav-hide-toggle,
+  .left-nav-show-toggle {
+    display: none !important;
+  }
+
   body {
     padding-top: 136px;
   }

@@ -11,8 +11,13 @@ const lightboxImage = document.getElementById('lightbox-image');
 const lightboxTitle = document.getElementById('lightbox-title');
 const lightboxDesc = document.getElementById('lightbox-desc');
 const lightboxClose = document.getElementById('lightbox-close');
+const lightboxGraphOverlay = document.getElementById('lightbox-graph-overlay');
+const lightboxDrawingToggle = document.getElementById('lightbox-drawing-toggle');
+const lightboxGridSize = document.getElementById('lightbox-grid-size');
+const lightboxGridColor = document.getElementById('lightbox-grid-color');
 
 const GALLERY_DATA_PATH = 'data/gallery.json';
+const SVG_NS = 'http://www.w3.org/2000/svg';
 
 function updateToggleUI(theme) {
   const toggles = document.querySelectorAll('[data-theme-toggle]');
@@ -163,20 +168,98 @@ function openLightbox(item) {
   lightboxImage.alt = item.alt;
   lightboxTitle.textContent = item.title;
   lightboxDesc.textContent = item.description;
+  renderGridOverlay(getSelectedGridSize());
+  setDrawingOverlay(false);
   lightbox.classList.remove('hidden');
   lightbox.classList.add('flex');
 }
 
 function closeLightbox() {
   if (!lightbox) return;
+  setDrawingOverlay(false);
   lightbox.classList.add('hidden');
   lightbox.classList.remove('flex');
+}
+
+function setDrawingOverlay(showOverlay) {
+  if (!lightboxGraphOverlay || !lightboxDrawingToggle) return;
+  lightboxGraphOverlay.classList.toggle('hidden', !showOverlay);
+  lightboxDrawingToggle.setAttribute('aria-pressed', showOverlay ? 'true' : 'false');
+}
+
+function getSelectedGridSize() {
+  const selected = Number.parseInt(lightboxGridSize?.value ?? '3', 10);
+  return Number.isFinite(selected) && selected > 1 ? selected : 3;
+}
+
+function createSvgNode(type, attrs, className) {
+  const node = document.createElementNS(SVG_NS, type);
+  Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, String(value)));
+  if (className) node.setAttribute('class', className);
+  return node;
+}
+
+function getSelectedGridColor() {
+  const fallback = '#ffffff';
+  const value = lightboxGridColor?.value ?? fallback;
+  return /^#([A-Fa-f0-9]{6})$/.test(value) ? value : fallback;
+}
+
+function renderGridOverlay(matrixSize) {
+  if (!lightboxGraphOverlay) return;
+
+  const safeSize = Number.isFinite(matrixSize) && matrixSize > 1 ? matrixSize : 3;
+  const color = getSelectedGridColor();
+  const start = 1;
+  const end = 99;
+  const span = end - start;
+  const step = span / safeSize;
+
+  lightboxGraphOverlay.replaceChildren();
+  lightboxGraphOverlay.appendChild(
+    createSvgNode('rect', { x: start, y: start, width: span, height: span }, 'graph-grid-border')
+  );
+
+  for (let i = 1; i < safeSize; i += 1) {
+    const pos = (start + step * i).toFixed(2);
+    lightboxGraphOverlay.appendChild(
+      createSvgNode('line', { x1: pos, y1: start, x2: pos, y2: end }, 'graph-grid-line')
+    );
+    lightboxGraphOverlay.appendChild(
+      createSvgNode('line', { x1: start, y1: pos, x2: end, y2: pos }, 'graph-grid-line')
+    );
+  }
+
+  lightboxGraphOverlay.style.setProperty('--grid-color', color);
 }
 
 function initLightbox() {
   if (lightboxClose) {
     lightboxClose.addEventListener('click', closeLightbox);
   }
+
+  if (lightboxDrawingToggle) {
+    lightboxDrawingToggle.addEventListener('click', () => {
+      if (!lightboxGraphOverlay) return;
+      const shouldShow = lightboxGraphOverlay.classList.contains('hidden');
+      renderGridOverlay(getSelectedGridSize());
+      setDrawingOverlay(shouldShow);
+    });
+  }
+
+  if (lightboxGridSize) {
+    lightboxGridSize.addEventListener('change', () => {
+      renderGridOverlay(getSelectedGridSize());
+    });
+  }
+
+  if (lightboxGridColor) {
+    lightboxGridColor.addEventListener('input', () => {
+      renderGridOverlay(getSelectedGridSize());
+    });
+  }
+
+  renderGridOverlay(getSelectedGridSize());
 
   if (lightbox) {
     lightbox.addEventListener('click', (event) => {

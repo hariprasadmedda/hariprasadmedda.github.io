@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/styles.css?v=20260221d" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260222j" />
   
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -94,16 +94,35 @@
     <div class="relative max-w-4xl w-full">
       <button id="lightbox-close" class="absolute -top-10 right-0 text-slate-200 hover:text-amber-200">Close ✕</button>
       <div class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 shadow-2xl">
-        <img id="lightbox-image" src="" alt="" class="w-full h-auto object-contain max-h-[70vh]" />
+        <div class="lightbox-image-wrap">
+          <img id="lightbox-image" src="" alt="" class="block mx-auto max-w-full h-auto object-contain max-h-[70vh]" />
+          <svg id="lightbox-graph-overlay" class="lightbox-graph-overlay hidden" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+        </div>
         <div class="p-4 border-t border-slate-800">
-          <h3 id="lightbox-title" class="text-xl font-semibold"></h3>
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <h3 id="lightbox-title" class="text-xl font-semibold"></h3>
+            <div class="drawing-controls">
+              <label for="lightbox-grid-size" class="drawing-controls__label">Grid</label>
+              <select id="lightbox-grid-size" class="grid-size-select">
+                <option value="3">3x3</option>
+                <option value="4">4x4</option>
+                <option value="5">5x5</option>
+                <option value="6">6x6</option>
+                <option value="8">8x8</option>
+                <option value="10">10x10</option>
+              </select>
+              <label for="lightbox-grid-color" class="drawing-controls__label">Color</label>
+              <input id="lightbox-grid-color" class="grid-color-input" type="color" value="#ffffff" aria-label="Grid color" />
+              <button id="lightbox-drawing-toggle" class="drawing-toggle" type="button" aria-pressed="false">Graph</button>
+            </div>
+          </div>
           <p id="lightbox-desc" class="text-slate-300 mt-1"></p>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="assets/nav-loader.js?v=20260221d" defer></script>
-  <script src="assets/gallery.js?v=20260221d" defer></script>
+  <script src="assets/nav-loader.js?v=20260222j" defer></script>
+  <script src="assets/gallery.js?v=20260222g" defer></script>
 </body>
 </html>
