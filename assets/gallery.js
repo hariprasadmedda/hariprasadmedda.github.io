@@ -170,6 +170,7 @@ function openLightbox(item) {
   lightboxDesc.textContent = item.description;
   renderGridOverlay(getSelectedGridSize());
   setDrawingOverlay(false);
+  document.body.classList.add('lightbox-open');
   lightbox.classList.remove('hidden');
   lightbox.classList.add('flex');
 }
@@ -179,6 +180,7 @@ function closeLightbox() {
   setDrawingOverlay(false);
   lightbox.classList.add('hidden');
   lightbox.classList.remove('flex');
+  document.body.classList.remove('lightbox-open');
 }
 
 function setDrawingOverlay(showOverlay) {

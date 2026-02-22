@@ -358,6 +358,42 @@ body[data-theme-ready="true"] {
     font-size: 0.78rem;
     padding: 0.3rem 0.65rem;
   }
+
+  #lightbox {
+    padding: 1rem 0.75rem;
+  }
+
+  #lightbox-dialog {
+    width: 100%;
+    max-height: calc(100vh - 1.5rem);
+    max-height: calc(100dvh - 1.5rem);
+  }
+
+  #lightbox-panel {
+    max-height: calc(100vh - 2.5rem);
+    max-height: calc(100dvh - 2.5rem);
+  }
+
+  #lightbox .lightbox-image-wrap {
+    padding: 0.85rem 0.5rem 0.4rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #lightbox-image {
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 12rem);
+    max-height: calc(100dvh - 12rem);
+    object-fit: contain;
+  }
+
+  #lightbox-close {
+    top: -2.1rem;
+    right: 0.15rem;
+  }
 }
 
 .themed-surface {
@@ -563,5 +599,14 @@ body[data-theme="light"] .rounded-2xl.border-slate-800\/80,
 
   body {
     padding-top: 136px;
+  }
+
+  body.lightbox-open {
+    padding-top: 0;
+    overflow: hidden;
+  }
+
+  body.lightbox-open #mobile-top-container {
+    display: none;
   }
 }
